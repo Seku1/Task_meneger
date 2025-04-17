@@ -1,16 +1,12 @@
-package com.example.taskmeneger.mastruct.dtos;
+package com.example.taskmenager.mastruct.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
-public class TaskDTO {
-    @JsonProperty("id")
-    private Long id;
-
+public class UpdateTaskDTO {
     @JsonProperty("title")
     private String title;
 
@@ -25,13 +21,4 @@ public class TaskDTO {
 
     @JsonProperty("priority")
     private Integer priority;
-
-    @JsonProperty("created_at")
-    private LocalDateTime createdAt;
-
-    @JsonProperty("updated_at")
-    private LocalDateTime updatedAt;
-
-    @JsonProperty("user_id")
-    private Long userId;
 }

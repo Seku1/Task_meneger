@@ -1,4 +1,4 @@
-package com.example.taskmeneger.mastruct.dtos;
+package com.example.taskmenager.mastruct.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

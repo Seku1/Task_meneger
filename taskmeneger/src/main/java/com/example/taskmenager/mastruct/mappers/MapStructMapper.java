@@ -1,10 +1,10 @@
-package com.example.taskmeneger.mastruct.mappers;
+package com.example.taskmenager.mastruct.mappers;
 
 
-import com.example.taskmeneger.mastruct.dtos.*;
-import com.example.taskmeneger.model.Task;
-import com.example.taskmeneger.model.User;
-import com.example.taskmeneger.model.WeatherSnapshot;
+import com.example.taskmenager.mastruct.dtos.*;
+import com.example.taskmenager.model.Task;
+import com.example.taskmenager.model.User;
+import com.example.taskmenager.model.WeatherSnapshot;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

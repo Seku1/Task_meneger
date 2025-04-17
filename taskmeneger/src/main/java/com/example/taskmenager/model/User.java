@@ -1,4 +1,4 @@
-package com.example.taskmeneger.model;
+package com.example.taskmenager.model;
 
 import jakarta.persistence.*;
 import lombok.*;
