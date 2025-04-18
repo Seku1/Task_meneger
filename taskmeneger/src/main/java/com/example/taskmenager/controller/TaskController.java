@@ -5,7 +5,9 @@ import com.example.taskmenager.mastruct.dtos.TaskDTO;
 import com.example.taskmenager.mastruct.dtos.UpdateTaskDTO;
 import com.example.taskmenager.mastruct.mappers.MapStructMapper;
 import com.example.taskmenager.service.TaskService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class TaskController {
 
     private final TaskService taskService;
+    @Qualifier("mapStructMapperImpl")
     private final MapStructMapper mapper;
 
     @GetMapping
@@ -34,8 +37,10 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskDTO createTask(@RequestBody CreateTaskDTO createTaskDTO) {
-        return mapper.taskToTaskDTO(taskService.createTask(createTaskDTO));
+    public TaskDTO createTask(@Valid @RequestBody CreateTaskDTO createTaskDTO) {
+        return mapper.taskToTaskDTO(
+                taskService.createTask(createTaskDTO)
+        );
     }
 
     @PutMapping("/{id}")

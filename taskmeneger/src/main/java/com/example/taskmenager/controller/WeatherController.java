@@ -5,6 +5,7 @@ import com.example.taskmenager.mastruct.mappers.MapStructMapper;
 import com.example.taskmenager.model.WeatherSnapshot;
 import com.example.taskmenager.service.WeatherService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import java.util.List;
 public class WeatherController {
 
     private final WeatherService weatherService;
+    @Qualifier("mapStructMapperImpl")
     private final MapStructMapper mapper;
 
     @GetMapping("/fetch")

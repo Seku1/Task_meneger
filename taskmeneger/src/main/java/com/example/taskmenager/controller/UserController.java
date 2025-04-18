@@ -5,7 +5,9 @@ import com.example.taskmenager.mastruct.dtos.UserRegistrationDTO;
 import com.example.taskmenager.mastruct.mappers.MapStructMapper;
 import com.example.taskmenager.model.User;
 import com.example.taskmenager.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +18,11 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    @Qualifier("mapStructMapperImpl")
     private final MapStructMapper mapper;
 
     @PostMapping("/register")
-    public UserDTO registerUser(@RequestBody UserRegistrationDTO dto) {
+    public UserDTO registerUser(@RequestBody @Valid UserRegistrationDTO dto) {
         User user = userService.register(dto);
         return mapper.userToUserDTO(user);
     }
@@ -32,12 +35,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable Long id) {
+    public UserDTO getUserById(@PathVariable @Valid Long id) {
         return mapper.userToUserDTO(userService.getById(id));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable @Valid Long id) {
         userService.delete(id);
     }
 }
