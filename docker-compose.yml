@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: ./taskmeneger
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      - db
+    networks:
+      - taskmeneger-network
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - taskmeneger-network
+
+  frontend:
+    build:
+      context: ./taskmenager_front
+    ports:
+      - "3000:3000"
+
+volumes:
+  db-data:
+
+networks:
+  taskmeneger-network:
+    driver: bridge
