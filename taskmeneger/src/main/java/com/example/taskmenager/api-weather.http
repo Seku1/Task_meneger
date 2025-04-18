@@ -1,0 +1,30 @@
+### Fetch weather for a city
+GET http://localhost:8080/api/weather/fetch?city=Paris
+Accept: application/json
+
+### Get all stored snapshots
+GET http://localhost:8080/api/weather
+Accept: application/json
+
+###
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Finish backend",
+  "description": "Complete task and user services",
+  "dueDate": "2025-04-30T18:00:00",
+  "priority": 1,
+  "user_id": 100
+}
+###
+GET http://localhost:8080/api/tasks?search=backend&page=0&size=5&sortBy=dueDate&direction=asc
+###
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "username": "john423",
+  "email": "joh4n@example.com",
+  "password": "password"
+}
